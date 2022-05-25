@@ -1,0 +1,16 @@
+﻿@page
+@model AccountStoreApp.Pages.Accounts.DetailsModel
+@{
+}
+
+
+
+<div class="card" style="width: 18rem;">
+  
+    <div class="card-body">
+        <h5 class="card-title">   @Model.Account.AccountName</h5>
+        <p class="card-text"> @Model.Account.Description</p>
+        <p> @Model.Account.Password</p>
+        <a asp-page="Index">back</a>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿@page
+@model AccountStore.Pages.Accounts.IndexModel
+
+
+
+
+<head>
+
+    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+
+************ For Testing Purpose Only*************
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="mainhead">Account List</h2>
+        </div>
+
+        <div class="col-6  text-end">
+            <a asp-page="Create" class="mybtn primary-mybtn">
+                <i class="bi bi-plus-square"></i> Create Account
+            </a>
+        </div>
+
+    </div>
+</div>
+<br />
+
+<table id="AccountTable" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+
+            <th>Account Name</th>
+            <th>Account Description</th>
+            <th>URL</th>
+            <th>Created</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Accounts)
+        {
+            <tr>
+
+                <td><a asp-page="Details" asp-route-id="@item.Id">@item.AccountName</a></td>
+                <td>@item.Description</td>
+                <td>@item.URL</td>
+                <td>@item.Created</td>
+
+                <td>
+                    <div class="w-75 btn-group" role="group">
+
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="mybtnsm primary-mybtnsm mx-2"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-page="Delete" asp-route-id="@item.Id" class="mybtnsm second-mybtnsm mx-2"><i class="bi bi-trash3"></i></a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#AccountTable').DataTable();
+        });
+
+    </script>
+
+}
